@@ -1,0 +1,15 @@
+{
+	"clientId"	: "465914503746420756",
+	"guildId"	: "1134413240789651597",
+	"token"		: "NDY1OTE0NTAzNzQ2NDIwNzU2.GScFOz.Y-2HTvU-6hyC8RxiP8-khkoYlkObhR3m7NY8wU",
+	
+	"config_domain"	: "",
+	"config_port"	: "",
+	
+	"defaultPower": 20,
+	"toy_power": [
+		{ "name": "low",    "value": 1 },
+		{ "name": "medium", "value": 10 },
+		{ "name": "high",   "value": 20 }
+	]
+}

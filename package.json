@@ -1,0 +1,26 @@
+{
+    "name": "FemdomTempleLovsense",
+    "version": "1.0.0",
+    "description": "Femdom temple homebrew",
+    "main": "index.js",
+    "scripts": {
+        "main": "node index.js"
+    },
+    "keywords": [
+        "lovense",
+        "discord",
+        "discord-bot",
+        "sextoys"
+    ],
+    "author": "Emma(totalchacal)",
+    "license": "MIT",
+    "dependencies": {
+        "@discordjs/builders": "^0.12.0",
+        "@discordjs/rest": "^0.3.0",
+        "discord-api-types": "^0.27.2",
+        "discord.js": "^14.11.0",
+        "express": "^4.18.2",
+        "mysql": "^2.18.1",
+        "node-fetch": "^3.2.0"
+    }
+}
