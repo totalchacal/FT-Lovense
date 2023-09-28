@@ -33,7 +33,6 @@ module.exports = {
             con.connect(function(err) {
                 if (err) throw err;
                 var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.id + "','"+toyToSave1+ " " + toyToSave2 +"','"+linkTimeToSave+ "', '"+linkToSave+"')";
-                console.log(sql)
                 con.query(sql, function (err, result) {
                   if (err) throw err;
                   console.log(result);
