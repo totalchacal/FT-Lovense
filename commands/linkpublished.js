@@ -1,5 +1,5 @@
 
-const {SlashCommandBuilder, EmbedBuilder} = require('discord.js')
+const {SlashCommandBuilder, EmbedBuilder, ButtonBuilder} = require('discord.js')
 var mysql = require('mysql');
 module.exports = {
     data: new SlashCommandBuilder()
@@ -55,7 +55,7 @@ module.exports = {
                     tiddiedupList.push(temp2[3])
                 }
                 i++
-            }
+            }/*
             const embeds = new EmbedBuilder()
             .setTitle('Published link so far...')
             .setColor('Green')
@@ -74,7 +74,9 @@ module.exports = {
             interaction.reply({
                 embeds : [embeds],
                 ephemeral : true
-            })
+            })*/
+            const next = new ButtonBuilder()
+            interaction.reply(theFullList)
             });
             //console.log(theFullList)
             con.end()
