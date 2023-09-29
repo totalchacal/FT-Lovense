@@ -32,10 +32,11 @@ module.exports = {
               });
             con.connect(function(err) {
                 if (err) throw err;
-                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.id + "','"+toyToSave1+ " " + toyToSave2 +"','"+linkTimeToSave+ "', '"+linkToSave+"')";
+                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.tag + "','"+toyToSave1+ " " + toyToSave2 +"','"+linkTimeToSave+ "', '"+linkToSave+"')";
+                console.log(interaction.user.tag)
                 con.query(sql, function (err, result) {
                   if (err) throw err;
-                  console.log(result);
+                  //console.log(result);
                 });
                 con.end()
               });
@@ -48,10 +49,10 @@ module.exports = {
               });
             con.connect(function(err) {
                 if (err) throw err;
-                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.id + "','"+toyToSave+"','"+linkTimeToSave+ "', '"+linkToSave+"')";
+                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.tag + "','"+toyToSave+"','"+linkTimeToSave+ "', '"+linkToSave+"')";
                 con.query(sql, function (err, result) {
                   if (err) throw err;
-                  console.log(result);
+                  //console.log(result);
                 });
                 con.end()
               });
