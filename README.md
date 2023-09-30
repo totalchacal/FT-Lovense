@@ -1,2 +1,2 @@
 # FT-Lovense
-get links and other from that bot
+Bot for FT, for a lovense integration to the server 
