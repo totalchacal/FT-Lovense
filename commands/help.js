@@ -8,22 +8,15 @@ module.exports = {
     
     async execute(interaction){
         const embeds = new EmbedBuilder()
-        .setTitle('help')
-        .setDescription("bot help menu")
+        .setTitle('Help me')
+        .setDescription("Here you'll see every avaible command for the bot")
         .setColor('Green')
-        .setAuthor({name:interaction.user.tag, iconURL: interaction.user.displayAvatarURL()})
         .addFields(
             {
-                name: 'FAQ',
-                value: 'example text',
-                inline : true 
-            },
-            {
-                name: 'zob',
-                value: 'example text',
+                name: 'Avaible commands',
+                value: '/qrcode\n/linkpublished\n/randomlink\n/sendlink\n/removelink',
                 inline : true 
             }
-            //inline true cote a cote  false over under
         )
         await interaction.reply({
             embeds : [embeds],
