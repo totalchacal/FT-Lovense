@@ -32,8 +32,13 @@ const commandFiles = getFiles('./commands');
 for (const file of commandFiles){
     const command = require(file)
     commands.push(command.data.toJSON())
-}
-const rest = new REST({version: '10'}).setToken(token);
+}const rest = new REST({version: '10'}).setToken(token);
+
+
+rest.put(Routes.applicationCommands(clientId), { body: [] })
+	.then(() => console.log('Successfully deleted all application commands.'))
+	.catch(console.error);
+
 rest.put(Routes.applicationGuildCommands(clientId, guildId), {body: commands})
 .then(()=> console.log('sucessfully registered application commands'))
 .catch(console.error)
