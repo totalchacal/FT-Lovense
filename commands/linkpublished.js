@@ -1,5 +1,5 @@
 
-const {SlashCommandBuilder, EmbedBuilder, ButtonBuilder,ButtonStyle,ActionRowBuilder} = require('discord.js')
+const {SlashCommandBuilder, EmbedBuilder} = require('discord.js')
 var mysql = require('mysql');
 module.exports = {
     data: new SlashCommandBuilder()
@@ -41,6 +41,7 @@ module.exports = {
             theFullestList.pop()
             if(page == null){
                 i = 0
+                a = 0
                 ListToModify = []
                 ListToshow = "" 
                 isUdefined = false
@@ -49,11 +50,24 @@ module.exports = {
                         isUdefined = true
                     }else{
                         ListToModify.push(theFullestList[i])
-                        ListToshow = ListToshow + ListToModify[i] +"\n"
+                        ListToshow = ListToshow + ListToModify[a] +"\n\n"
                         i++
+                        a++
                     }
+
                 }
-                interaction.reply({content :ListToshow, ephemeral: true})
+                if(!ListToshow){
+                    ListToshow = "Nothing to see here go back a page"
+                    interaction.reply({content :ListToshow, ephemeral: true})
+                }else{
+                    const exampleEmbed = new EmbedBuilder()
+                    .setColor(0x0099FF)
+                    .addFields(
+                        { name: 'here are the links', value: ListToshow },
+                    )
+                    //interaction.reply({content :ListToshow, ephemeral: true})
+                    interaction.reply({embeds : [exampleEmbed], ephemeral: true})
+                }
             }
             else if(page == "2"){
                 i = page*5
@@ -66,7 +80,7 @@ module.exports = {
                         isUdefined = true
                     }else{
                         ListToModify.push(theFullestList[i])
-                        ListToshow = ListToshow + ListToModify[a] +"\n"
+                        ListToshow = ListToshow + ListToModify[a] +"\n\n"
                         i++
                         a++
                     }
@@ -76,7 +90,13 @@ module.exports = {
                     ListToshow = "Nothing to see here go back a page"
                     interaction.reply({content :ListToshow, ephemeral: true})
                 }else{
-                    interaction.reply({content :ListToshow, ephemeral: true})
+                    const exampleEmbed = new EmbedBuilder()
+                    .setColor(0x0099FF)
+                    .addFields(
+                        { name: 'here are the links', value: ListToshow },
+                    )
+                    //interaction.reply({content :ListToshow, ephemeral: true})
+                    interaction.reply({embeds : [exampleEmbed], ephemeral: true})
                 }
             }
             else{
@@ -90,7 +110,7 @@ module.exports = {
                         isUdefined = true
                     }else{
                         ListToModify.push(theFullestList[i])
-                        ListToshow = ListToshow + ListToModify[a] +"\n"
+                        ListToshow = ListToshow + ListToModify[a] +"\n\n"
                         i++
                         a++
                     }
@@ -99,51 +119,15 @@ module.exports = {
                     ListToshow = "Nothing to see here go back a page"
                     interaction.reply({content :ListToshow, ephemeral: true})
                 }else{
-                    interaction.reply({content :ListToshow, ephemeral: true})
+                    const exampleEmbed = new EmbedBuilder()
+                    .setColor(0x0099FF)
+                    .addFields(
+                        { name: 'here are the links', value: ListToshow },
+                    )
+                    //interaction.reply({content :ListToshow, ephemeral: true})
+                    interaction.reply({embeds : [exampleEmbed], ephemeral: true})
                 }
             }
-
-
-
-
-
-
-
-            i = 0
-            tiddiedupList = []
-            while(i < theFullestList.length-1) {
-                temp = theFullestList[i]
-                temp2 = temp.split(" ")
-                if(temp2.length == 6){
-                    tiddiedupList.push(temp2[0])
-                    tiddiedupList.push(temp2[1] +" " +temp2[3])
-                    tiddiedupList.push(temp2[4])
-                    tiddiedupList.push(temp2[5])
-                }
-                else{
-                    tiddiedupList.push(temp2[0])
-                    tiddiedupList.push(temp2[1])
-                    tiddiedupList.push(temp2[2])
-                    tiddiedupList.push(temp2[3])
-                }
-                i++
-            }
-            /*const embeds = new EmbedBuilder()
-            .setTitle('Published link so far...')
-            .setColor('Green')
-            .addFields(
-                {
-                    name: tiddiedupList[0],
-                    value: tiddiedupList[1] +'\n'+tiddiedupList[2]+"\n"+tiddiedupList[3],
-                    inline : true 
-                },
-                {
-                    name: tiddiedupList[4],
-                    value: tiddiedupList[5] +'\n'+tiddiedupList[6]+"\n"+tiddiedupList[7],
-                    inline : true 
-                })*/
-            //console.log(theFullestList)
-            //interaction.reply({content :theFullList, ephemeral: true})
             });
             con.end()
           });    
