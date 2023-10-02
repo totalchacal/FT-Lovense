@@ -3,15 +3,15 @@ var mysql = require('mysql');
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('sendlink')
+    .setName('sendlink2')
     .setDescription('allow you to send a control link to the bot some dommes can use it')
     .addStringOption(option2 => option2 
-        .setName('string')
+        .setName('link')
         .setDescription(`link to send as a whole, copy paste the whole thing we'll take care of the rest`)
         .setRequired(true)
         ),
     async execute(interaction){
-        const text = interaction.options.getString('string');
+        const text = interaction.options.getString('link');
         splitted = text.split("[")
         toys = splitted[1].split("]")
         linkTime = splitted[2].split("]")
@@ -33,10 +33,8 @@ module.exports = {
             con.connect(function(err) {
                 if (err) throw err;
                 var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.tag + "','"+toyToSave1+ " " + toyToSave2 +"','"+linkTimeToSave+ "', '"+linkToSave+"')";
-                console.log(interaction.user.tag)
                 con.query(sql, function (err, result) {
                   if (err) throw err;
-                  //console.log(result);
                 });
                 con.end()
               });
@@ -52,12 +50,10 @@ module.exports = {
                 var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.tag + "','"+toyToSave+"','"+linkTimeToSave+ "', '"+linkToSave+"')";
                 con.query(sql, function (err, result) {
                   if (err) throw err;
-                  //console.log(result);
+                  interaction.reply({content :"link has been saved", ephemeral: true})
                 });
                 con.end()
               });
-              interaction.reply({content :"link has been saved", ephemeral: true})
-              //interaction.reply("link has been saved");
         }
     }
 }
