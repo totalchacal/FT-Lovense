@@ -34,7 +34,7 @@ module.exports = {
                 firsttoys = result[i].toys
                 firstTime = result[i].linktime
                 firstlink = result[i].link
-                theFullList = theFullList+""+firstWho+" "+firsttoys+" "+firstlink+" "+firstTime+"\n"
+                theFullList = theFullList+""+firstWho+" "+firsttoys+" [Lovense link]("+firstlink+") "+firstTime+"\n"
                 i++;
             }
             theFullestList = theFullList.split('\n')
