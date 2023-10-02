@@ -3,7 +3,7 @@ var mysql = require('mysql');
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('sendlink2')
+    .setName('sendlink')
     .setDescription('allow you to send a control link to the bot some dommes can use it')
     .addStringOption(option2 => option2 
         .setName('link')
