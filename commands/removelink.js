@@ -11,7 +11,7 @@ module.exports = {
         .setRequired(true)
         ),
     async execute(interaction){
-      const text = interaction.options.getString('link')
+      const text = interaction.options.getString('string')
       var con = mysql.createConnection({
           host: "localhost",
           user: "root",
@@ -19,10 +19,13 @@ module.exports = {
         });
       con.connect(function(err) {
           if (err) throw err;
-          var sql = "DELETE FROM `links` WHERE `who` LIKE '"+ interaction.user.id + "' AND `link` LIKE '"+ text +"'";
+          var sql = "DELETE FROM `links` WHERE `who` LIKE '"+ interaction.user.tag + "' AND `link` LIKE '"+ text +"'";
+          console.log(sql)
           con.query(sql, function (err, result) {
             if (err) throw err;
-            interaction.reply("links were deleted")
+            console.log(result)
+            //interaction.reply("links were deleted")
+            interaction.reply({content :"links were deleted", ephemeral: true})
           });
           con.end()
         }); 

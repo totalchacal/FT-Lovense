@@ -56,7 +56,8 @@ module.exports = {
                 });
                 con.end()
               });
-              interaction.reply("link has been saved");
+              interaction.reply({content :"link has been saved", ephemeral: true})
+              //interaction.reply("link has been saved");
         }
     }
 }
