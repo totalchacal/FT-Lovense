@@ -1,6 +1,6 @@
 const {SlashCommandBuilder} = require('discord.js')
 var mysql = require('mysql');
-
+require('dotenv').config();
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('removelink')
@@ -13,9 +13,9 @@ module.exports = {
     async execute(interaction){
       const text = interaction.options.getString('link')
       var con = mysql.createConnection({
-          host: "localhost",
-          user: "root",
-          database: "lovsense"
+        host: process.env.host,
+        user: process.env.username,
+        database: process.env.database
         });
       con.connect(function(err) {
           if (err) throw err;

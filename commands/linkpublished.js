@@ -1,6 +1,7 @@
 
 const {SlashCommandBuilder, EmbedBuilder} = require('discord.js')
 var mysql = require('mysql');
+require('dotenv').config();
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('linkpubished')
@@ -14,9 +15,9 @@ module.exports = {
         const page = interaction.options.getString('page');
 
         var con = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            database: "lovsense"
+            host: process.env.host,
+            user: process.env.username,
+            database: process.env.database
           });
           con.connect(function(err) {
             if (err) throw err;

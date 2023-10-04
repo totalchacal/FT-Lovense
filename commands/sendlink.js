@@ -1,6 +1,6 @@
 const {SlashCommandBuilder} = require('discord.js')
 var mysql = require('mysql');
-
+require('dotenv').config();
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('sendlink')
@@ -26,9 +26,9 @@ module.exports = {
             toyToSave2 = toyParsing[1]
 
             var con = mysql.createConnection({
-                host: "localhost",
-                user: "root",
-                database: "lovsense"
+                host: process.env.host,
+                user: process.env.username,
+                database: process.env.database
               });
             con.connect(function(err) {
                 if (err) throw err;
@@ -41,9 +41,9 @@ module.exports = {
               interaction.reply("link has been saved");
         }else{
             var con = mysql.createConnection({
-                host: "localhost",
-                user: "root",
-                database: "lovsense"
+                host: process.env.host,
+                user: process.env.username,
+                database: process.env.database
               });
             con.connect(function(err) {
                 if (err) throw err;
