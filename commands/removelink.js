@@ -1,6 +1,8 @@
 const {SlashCommandBuilder} = require('discord.js')
 var mysql = require('mysql');
-require('dotenv').config();
+const path = require('path')
+const dotenv = require('dotenv')
+dotenv.config({ path: './.env' })
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('removelink')
@@ -13,10 +15,11 @@ module.exports = {
     async execute(interaction){
       const text = interaction.options.getString('link')
       var con = mysql.createConnection({
-        host: process.env.host,
-        user: process.env.username,
-        database: process.env.database
-        });
+        host: process.env.HOST,
+        user: process.env.USER,
+        //password: process.env.password,
+        database: process.env.DATABASE
+      });
       con.connect(function(err) {
           if (err) throw err;
           var sql = "DELETE FROM `links` WHERE `who` LIKE '"+ interaction.user.tag + "' AND `link` LIKE '"+ text +"'";
