@@ -27,6 +27,10 @@ module.exports = {
               var normalResults = result.map((mysqlObj, index) => {
                 return Object.assign({}, mysqlObj);
             });
+            if(normalResults.length == 0){
+                interaction.reply({content :"There are no link currently avaible, come back later sorry", ephemeral: true})
+                return("")
+            }
             theFullList = ""
             i = 0
 
