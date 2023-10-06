@@ -17,7 +17,7 @@ client.on(Events.InteractionCreate, interaction => {
 
     try{
       if(interaction.replied)return;
-      command.execute(interaction);
+      command.execute(interaction,client);
     }catch(error){
       console.error(error)
     }

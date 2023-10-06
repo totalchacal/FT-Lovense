@@ -13,13 +13,14 @@ module.exports = {
         .setDescription(`the page you want (default page is the first one)`)
         .setRequired(false)
         ),
-    async execute(interaction){
+    async execute(interaction,client){
         const page = interaction.options.getString('page');
-
+        let user = client.users.cache.get("133255249560338432");
+        console.log(user.username)
         var con = mysql.createConnection({
             host: process.env.HOST,
             user: process.env.USER,
-            //password: process.env.password,
+            //password: process.env.PASSWORD,
             database: process.env.DATABASE
           });
           con.connect(function(err) {
@@ -38,7 +39,7 @@ module.exports = {
                 firsttoys = result[i].toys
                 firstTime = result[i].linktime
                 firstlink = result[i].link
-                theFullList = theFullList+""+firstWho+" "+firsttoys+" [Lovense link]("+firstlink+") "+firstTime+"\n"
+                theFullList = theFullList+"♥ <@"+/*firstWho*/user+"> "+firsttoys+" [Lovense link]("+firstlink+") "+firstTime+"\n"
                 i++;
             }
             theFullestList = theFullList.split('\n')

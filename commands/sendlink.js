@@ -22,6 +22,7 @@ module.exports = {
         linkTimeToSave = linkTime[0]
         linkToSave = link.trim()
         
+        
         if(toyToSave.search(",") != -1){
             toyParsing = toyToSave.split(',')
             toyToSave1 = toyParsing[0]
@@ -30,12 +31,12 @@ module.exports = {
             var con = mysql.createConnection({
                 host: process.env.HOST,
                 user: process.env.USER,
-                //password: process.env.password,
+                //password: process.env.PASSWORD,
                 database: process.env.DATABASE
               });
             con.connect(function(err) {
                 if (err) throw err;
-                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.tag + "','"+toyToSave1+ " " + toyToSave2 +"','"+linkTimeToSave+ "', '"+linkToSave+"')";
+                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.id + "','"+toyToSave1+ " " + toyToSave2 +"','"+linkTimeToSave+ "', '"+linkToSave+"')";
                 con.query(sql, function (err, result) {
                   if (err) throw err;
                 });
@@ -46,12 +47,12 @@ module.exports = {
             var con = mysql.createConnection({
                 host: process.env.HOST,
                 user: process.env.USER,
-                //password: process.env.password,
+                //password: process.env.PASSWORD,
                 database: process.env.DATABASE
               });
             con.connect(function(err) {
                 if (err) throw err;
-                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.tag + "','"+toyToSave+"','"+linkTimeToSave+ "', '"+linkToSave+"')";
+                var sql = "INSERT INTO `links` (`id`, `who`, `toys`, `linktime`, `link`) VALUES (NULL,'"+ interaction.user.id + "','"+toyToSave+"','"+linkTimeToSave+ "', '"+linkToSave+"')";
                 con.query(sql, function (err, result) {
                   if (err) throw err;
                   interaction.reply({content :"link has been saved", ephemeral: true})

@@ -9,14 +9,14 @@ module.exports = {
     .setName('randomlink')
     .setDescription('give you 2 random link to use'),
     
-    async execute(interaction){
+    async execute(interaction,client){
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
           }
           var con = mysql.createConnection({
             host: process.env.HOST,
             user: process.env.USER,
-            //password: process.env.password,
+            //password: process.env.PASSWORD,
             database: process.env.DATABASE
           });
           con.connect(function(err) {
@@ -42,7 +42,7 @@ module.exports = {
                 firsttoys = result[i].toys
                 firstTime = result[i].linktime
                 firstlink = result[i].link
-                theFullList = theFullList+""+firstWho+" "+firsttoys+" [Lovense link]("+firstlink+") "+firstTime+"\n"
+                theFullList = theFullList+"<@"+firstWho+"> "+firsttoys+" [Lovense link]("+firstlink+") "+firstTime+"\n"
                 i++;
             }
             theFullestList = theFullList.split('\n')
