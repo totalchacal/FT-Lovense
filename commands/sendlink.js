@@ -14,6 +14,10 @@ module.exports = {
         ),
     async execute(interaction){
         const text = interaction.options.getString('link');
+        if(!text.includes("[") || !text.includes("] [") || !text.includes("https://c.lovense-api.com")){
+            interaction.reply({content :"Something went wrong please make sure you're copy pasting the link from te lovense app, it should be under this format: [Toy] [Time] lovense link", ephemeral: true})
+            return
+        }
         splitted = text.split("[")
         toys = splitted[1].split("]")
         linkTime = splitted[2].split("]")
