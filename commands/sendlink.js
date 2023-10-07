@@ -42,7 +42,7 @@ module.exports = {
                 });
                 con.end()
               });
-              interaction.reply("link has been saved");
+              interaction.reply({content :"link has been saved", ephemeral: true})
         }else{
             var con = mysql.createConnection({
                 host: process.env.HOST,
